@@ -36,16 +36,16 @@ const schema = yup.object().shape({
 });
 
 export class ContactForm extends Component {
-  render() {
-    const handleSubmit = (values, { resetForm }) => {
-      this.props.onSubmit(values);
-      resetForm();
-    };
+  handleSubmit = (values, { resetForm }) => {
+    this.props.onSubmit(values);
+    resetForm();
+  };
 
+  render() {
     return (
       <Formik
         initialValues={{ name: '', number: '' }}
-        onSubmit={handleSubmit}
+        onSubmit={this.handleSubmit}
         validationSchema={schema}
       >
         <FormContact>
